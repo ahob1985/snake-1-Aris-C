@@ -45,7 +45,11 @@ function draw() {
   scale(resolution);
   background(220);
   // Check if snake is eating the food
-
+if(snake.eat(food)){
+  createFood();
+  score++;
+  textP.html("Score" + score) 
+}
   // Draw the snake
   snake.update();
   snake.show();
@@ -55,7 +59,12 @@ function draw() {
   fill(255, 0, 0);
   rect(food.x, food.y, 1, 1);
   // Check for game over
-
+if(snake.endGame()){
+  textP.html("YOU LOSE, FINAL SCORE: " + score);
+  background(255, 0, 0);
+  noLoop();
+  buttonDiv.style("display", "block");s
+}
 }
 
 function createFood() {
@@ -73,6 +82,14 @@ function keyPressed() {
     snake.setDirection(-1, 0);
   } else if(keyCode === RIGHT_ARROW && snake.xDirection === 0) {
     snake.setDirection(1, 0);
+  }  else if(keyCode === 49 && snake.xDirection === 0) {
+    snake.setDirection(1, -1);
+  } else if(keyCode === 50 && snake.xDirection === 0) {
+    snake.setDirection(1, 1);
+  } else if(keyCode === 51 && snake.yDirection === 0) {
+    snake.setDirection(-1, -1);
+  } else if(keyCode === 52 && snake.yDirection === 0) {
+    snake.setDirection(-1, 1);
   }
 }
 
@@ -81,4 +98,8 @@ function resetGame() {
   snake = new Snake();
   // Create a food object
   createFood();
+  score = 0;
+  textP.html("Score: " + score);
+  loop();
+  buttonDiv.style("display", "none"); 
 }

@@ -8,6 +8,8 @@ html {
 
 body {
   text-align: center;
+  background-image: linear-gradient(to right, red, lightblue);
+  
 }
 
 div, div * {
