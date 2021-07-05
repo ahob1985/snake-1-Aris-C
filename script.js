@@ -82,13 +82,13 @@ function keyPressed() {
     snake.setDirection(-1, 0);
   } else if(keyCode === RIGHT_ARROW && snake.xDirection === 0) {
     snake.setDirection(1, 0);
-  }  else if(keyCode === 49 && snake.xDirection === 0) {
+  }  else if(keyCode === 49 && snake.yDirection === 0) {
     snake.setDirection(1, -1);
   } else if(keyCode === 50 && snake.xDirection === 0) {
     snake.setDirection(1, 1);
   } else if(keyCode === 51 && snake.yDirection === 0) {
     snake.setDirection(-1, -1);
-  } else if(keyCode === 52 && snake.yDirection === 0) {
+  } else if(keyCode === 52 && snake.xDirection === 0) {
     snake.setDirection(-1, 1);
   }
 }
@@ -101,5 +101,5 @@ function resetGame() {
   score = 0;
   textP.html("Score: " + score);
   loop();
-  buttonDiv.style("display", "none"); 
+  buttonDiv.style("display", "none");
 }
